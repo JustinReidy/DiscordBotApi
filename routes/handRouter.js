@@ -20,7 +20,7 @@ handRouter.route('/')
 
 handRouter.route('/:userId')
     .get((req, res) => {
-        Hand.find({userId: req.body.userId}, (err, hand) => {
+        Hand.find({userId: req.params.userId}, (err, hand) => {
             if(err) return res.status(500).send(err)
             return res.status(201).send(hand)
         })
