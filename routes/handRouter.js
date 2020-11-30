@@ -18,16 +18,16 @@ handRouter.route('/')
         })
     })
 
-handRouter.route('/:_id')
+handRouter.route('/:userId')
     .get((req, res) => {
-        Hand.findById(req.params._id, (err, hand) => {
+        Hand.find({userId: req.body.userId}, (err, hand) => {
             if(err) return res.status(500).send(err)
             return res.status(201).send(hand)
         })
     })
     .put((req, res) => {
         Hand.findOneAndUpdate(
-            {_id: req.params._id},
+            {userId: req.params.userId},
             req.body,
             {new: true},
             (err, hand) => {
@@ -38,7 +38,7 @@ handRouter.route('/:_id')
     })
     .delete((req, res) => {
         Hand.findOneAndDelete(
-            {_id: req.params._id},
+            {userId: req.params.userId},
             (err, hand) => {
                 if(err) return res.status(500).send(err)
                 return res.status(204).send(hand)
