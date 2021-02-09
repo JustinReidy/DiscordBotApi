@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/DiscordBo
 
 // Routes
 app.use("/playerHands", require('./routes/handRouter'))
-
+app.use("/stockMarket", require('./routes/bidRouter'))
 // Error Handling
 
 app.use((err, req, res, next) => {
